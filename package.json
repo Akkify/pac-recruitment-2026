@@ -1,0 +1,19 @@
+{
+  "name": "pac-recruitment-2026",
+  "version": "1.0.0",
+  "description": "PAC Automobile Club Recruitment 2026 - Interview Slot Booking Portal",
+  "scripts": {
+    "start": "npx -y serve . -l 3000",
+    "dev": "npx -y serve . -l 3000",
+    "test": "node test/test_logic.js && node test/verify_assets.js"
+  },
+  "keywords": [
+    "pac",
+    "automobile",
+    "interview-booking",
+    "google-apps-script",
+    "google-sheets"
+  ],
+  "author": "PAC Automobile Club",
+  "license": "MIT"
+}

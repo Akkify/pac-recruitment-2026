@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PAC Automobile Club — Recruitment 2026 Interview Slot Booking</title>
+  <meta name="description" content="Book your interview slot for PAC Automobile Club Recruitment 2026. Real-time slot availability, instant confirmation, and seamless Google Sheets integration.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/pac-logo.png">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Premium Opening Splash Animation Overlay -->
+  <div id="pac-intro-overlay" class="intro-overlay" role="dialog" aria-label="PAC Automobile Club Opening" aria-modal="true">
+    <div class="intro-container">
+      <div class="intro-logo-wrapper">
+        <div class="intro-glow-pulse" aria-hidden="true"></div>
+        <div class="intro-racing-sweep" aria-hidden="true"></div>
+        <img src="assets/pac-logo.png" alt="PAC Automobile Club — TORQSCREW Official Logo" class="intro-logo-img" width="160" height="160">
+      </div>
+      <div class="intro-text">
+        <span class="intro-club-title">PAC AUTOMOBILE CLUB</span>
+        <span class="intro-sub-title">Recruitment 2026 • Official Portal</span>
+      </div>
+      <div class="intro-progress-bar" aria-hidden="true">
+        <div class="intro-progress-line"></div>
+      </div>
+    </div>
+  </div>
+  <div class="carbon-bg-overlay"></div>
+
+  <!-- Top Announcement / Backend Status Bar -->
+  <header class="top-nav">
+    <div class="container nav-content">
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true">
+          <img src="assets/pac-logo.png" alt="PAC Automobile Club Official Logo" class="brand-logo-img" width="38" height="38">
+        </div>
+        <div class="brand-text">
+          <span class="club-title">PAC AUTOMOBILE CLUB</span>
+          <span class="portal-badge">Recruitment 2026</span>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <div id="backend-status-chip" class="status-chip checking" title="Google Sheets Backend Status">
+          <span class="status-dot"></span>
+          <span id="backend-status-text">Connecting...</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Layout -->
+  <main class="main-container">
+    <div class="container content-grid">
+      
+      <!-- Hero Section -->
+      <section class="hero-section text-center">
+        <div class="hero-badge">
+          <span class="badge-icon">🏎️</span>
+          <span>Official Interview Portal</span>
+        </div>
+        <h1 class="main-title">PAC Automobile Club</h1>
+        <p class="subtitle">Recruitment 2026 — Interview Slot Booking</p>
+        
+        <div class="event-meta-bar">
+          <div class="meta-item">
+            <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+            <span>21 – 23 October 2026</span>
+          </div>
+          <div class="meta-separator">•</div>
+          <div class="meta-item">
+            <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+              <circle cx="12" cy="9" r="2.5"/>
+            </svg>
+            <span>Behind EDC Building</span>
+          </div>
+        </div>
+
+
+      </section>
+
+      <!-- Booking Card -->
+      <section class="booking-card" id="booking-section">
+        <div class="card-glow-edge"></div>
+
+        <div class="card-header">
+          <div class="card-title-group">
+            <h2 class="card-title">Candidate Registration & Slot Selection</h2>
+            <p class="card-description">Select your preferred date and available time slot. Each candidate is entitled to exactly one booking.</p>
+          </div>
+          <div class="live-indicator-wrapper">
+            <button id="btn-refresh-slots" class="btn-refresh" type="button" title="Refresh live seat counts">
+              <svg id="refresh-icon" class="refresh-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="23 4 23 10 17 10"/>
+                <polyline points="1 20 1 14 7 14"/>
+                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+              </svg>
+              <span class="refresh-text">Refresh Seats</span>
+            </button>
+          </div>
+        </div>
+
+        <form id="booking-form" novalidate>
+          
+          <!-- Step 1: Candidate Information -->
+          <div class="form-step" id="step-candidate-info">
+            <div class="step-label">
+              <span class="step-num">01</span>
+              <span class="step-title">Candidate Details</span>
+            </div>
+
+            <div class="form-row two-col">
+              <!-- Full Name Field -->
+              <div class="form-group">
+                <label for="input-fullname" class="input-label">
+                  Full Name <span class="required">*</span>
+                </label>
+                <div class="input-wrapper">
+                  <span class="input-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                      <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                  </span>
+                  <input 
+                    type="text" 
+                    id="input-fullname" 
+                    name="fullName" 
+                    class="form-input" 
+                    placeholder="e.g. Alex Henderson" 
+                    required 
+                    minlength="2"
+                    autocomplete="name"
+                  >
+                </div>
+                <span class="field-error" id="error-fullname">Please enter your full name (minimum 2 characters).</span>
+              </div>
+
+              <!-- Email Address Field -->
+              <div class="form-group">
+                <label for="input-email" class="input-label">
+                  Email Address <span class="required">*</span>
+                </label>
+                <div class="input-wrapper">
+                  <span class="input-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                      <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                  </span>
+                  <input 
+                    type="email" 
+                    id="input-email" 
+                    name="email" 
+                    class="form-input" 
+                    placeholder="e.g. alex.henderson@example.com" 
+                    required 
+                    autocomplete="email"
+                  >
+                </div>
+                <span class="field-hint">Normalized automatically to prevent duplicate bookings.</span>
+                <span class="field-error" id="error-email">Please enter a valid email address.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Date Selection -->
+          <div class="form-step" id="step-date-selection">
+            <div class="step-label">
+              <span class="step-num">02</span>
+              <span class="step-title">Choose Interview Date</span>
+            </div>
+
+            <div class="date-selector-grid" id="date-buttons-container" role="radiogroup" aria-label="Select Interview Date">
+              <!-- Dynamically populated from JS -->
+            </div>
+            <span class="field-error text-center" id="error-date">Please select an interview date.</span>
+          </div>
+
+          <!-- Step 3: Slot Selection -->
+          <div class="form-step" id="step-slot-selection">
+            <div class="step-label">
+              <span class="step-num">03</span>
+              <span class="step-title">Choose Time Slot</span>
+              <span class="step-extra-info" id="selected-date-summary">Showing slots for Wed, Oct 21</span>
+            </div>
+
+            <div class="slots-grid" id="slots-container" role="radiogroup" aria-label="Select Time Slot">
+              <!-- Dynamically populated with capacity cards -->
+            </div>
+            <span class="field-error text-center" id="error-slot">Please select an available time slot.</span>
+          </div>
+
+          <!-- Booking Summary & Submission -->
+          <div class="form-summary-card" id="booking-summary-box">
+            <div class="summary-details">
+              <div class="summary-line">
+                <span class="summary-key">Candidate:</span>
+                <span class="summary-val" id="summary-candidate-name">Not entered yet</span>
+              </div>
+              <div class="summary-line">
+                <span class="summary-key">Email:</span>
+                <span class="summary-val" id="summary-candidate-email">Not entered yet</span>
+              </div>
+              <div class="summary-line highlight-line">
+                <span class="summary-key">Scheduled Slot:</span>
+                <span class="summary-val" id="summary-slot-time">Select date & slot above</span>
+              </div>
+            </div>
+
+            <div class="submit-action-area">
+              <button type="submit" id="btn-submit-booking" class="btn-submit">
+                <span class="btn-text">Confirm & Reserve Slot</span>
+                <span class="btn-spinner hidden" id="submit-spinner" aria-hidden="true"></span>
+                <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                  <polyline points="12 5 19 12 12 19"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Global Form Feedback (Server Error / Duplicate Error) -->
+          <div id="form-alert-message" class="form-alert hidden" role="alert">
+            <div class="alert-icon" id="form-alert-icon"></div>
+            <div class="alert-text" id="form-alert-text"></div>
+          </div>
+
+        </form>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Booking Confirmation Modal -->
+  <div id="modal-confirmation" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="confirmation-title">
+    <div class="modal-backdrop"></div>
+    <div class="modal-dialog">
+      <div class="modal-card">
+        
+        <div class="confirmation-header text-center">
+          <div class="success-ring-animation">
+            <svg class="checkmark-svg" viewBox="0 0 52 52">
+              <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+              <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+            </svg>
+          </div>
+          <span class="portal-badge-sm">PAC 2026 RECRUITMENT</span>
+          <h2 id="confirmation-title" class="confirmation-heading">Interview Slot Confirmed!</h2>
+          <p class="confirmation-subtext">Your interview booking has been locked and permanently recorded in the recruitment register.</p>
+        </div>
+
+        <div class="ticket-container">
+          <div class="ticket-header">
+            <div class="ticket-brand-badge">
+              <img src="assets/pac-logo.png" alt="PAC Logo" class="ticket-logo-img" width="26" height="26">
+              <span class="ticket-label">BOOKING REFERENCE PASS</span>
+            </div>
+            <span class="ticket-id" id="conf-booking-id">PAC-2026-XXXX</span>
+          </div>
+
+          <div class="ticket-body">
+            <div class="ticket-grid">
+              <div class="ticket-field">
+                <span class="tf-label">Candidate Name</span>
+                <span class="tf-value" id="conf-name">Alex Henderson</span>
+              </div>
+              <div class="ticket-field">
+                <span class="tf-label">Registered Email</span>
+                <span class="tf-value" id="conf-email">alex.henderson@example.com</span>
+              </div>
+              <div class="ticket-field">
+                <span class="tf-label">Interview Date</span>
+                <span class="tf-value" id="conf-date">Wednesday, 21 October 2026</span>
+              </div>
+              <div class="ticket-field">
+                <span class="tf-label">Time Slot</span>
+                <span class="tf-value time-badge" id="conf-time">4:30 PM–5:30 PM</span>
+              </div>
+              <div class="ticket-field full-width">
+                <span class="tf-label">Reporting Location</span>
+                <span class="tf-value" id="conf-venue">Behind EDC Building</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="ticket-instructions">
+            <h4 class="ti-title">Important Instructions for Candidates:</h4>
+            <ul>
+              <li>Please report <strong>10 minutes prior</strong> to your scheduled time slot.</li>
+              <li>Carry a valid College Student ID Card and your technical resume/portfolio.</li>
+              <li>Each candidate is strictly allowed only one interview booking.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="confirmation-actions">
+          <button id="btn-add-calendar" class="btn-secondary" type="button">
+            <svg class="action-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+            <span>Add to Calendar</span>
+          </button>
+          <button id="btn-print-ticket" class="btn-secondary" type="button">
+            <svg class="action-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 6 2 18 2 18 9"/>
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+              <rect x="6" y="14" width="12" height="8"/>
+            </svg>
+            <span>Print Pass</span>
+          </button>
+          <button id="btn-close-modal" class="btn-primary" type="button">
+            <span>Done</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content text-center">
+      <div class="footer-brand">
+        <span class="footer-title">PAC AUTOMOBILE CLUB</span>
+        <span class="footer-sub">Engineering • Innovation • Performance</span>
+      </div>
+      <p class="footer-copy">© 2026 PAC Automobile Club. All Rights Reserved. Recruitment Portal.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
